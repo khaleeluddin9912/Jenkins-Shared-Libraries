@@ -1,8 +1,8 @@
-def call(String credId, String imageName) {
-  withCredentials([usernamePassword(credentialsId: credId,passwordVariable: 'dockerHubPass',usernameVariable: 'dockerHubUser')]) {
-
+def call(String credId, String fullImageName) {
+  withCredentials([usernamePassword(credentialsId: credId, usernameVariable: 'dockerHubUser', passwordVariable: 'dockerHubPass')]) {
     sh "docker login -u $dockerHubUser -p $dockerHubPass"
-    sh "docker image tag ${imageName} ${dockerHubUser}/${imageName}"
-    sh "docker image pull ${dockerHubUser}/${fullimageName}:latest"
+    sh "docker image pull ${fullImageName}:latest"
+    // Only tag if needed (optional below)
+    // sh "docker image tag ${fullImageName}:latest notes-app:latest"
   }
 }

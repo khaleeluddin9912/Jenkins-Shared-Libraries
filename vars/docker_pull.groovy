@@ -3,6 +3,6 @@ def call(String credId, String fullImageName) {
     sh "docker login -u $dockerHubUser -p $dockerHubPass"
     sh "docker image pull ${fullImageName}:latest"
     // Only tag if needed (optional below)
-    // sh "docker image tag ${fullImageName}:latest notes-app:latest"
+    // sh "docker image tag ${fullImageName}:latest notes-app:latests"
   }
 }
